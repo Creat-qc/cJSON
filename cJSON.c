@@ -31,7 +31,7 @@
 #include <limits.h>
 #include <ctype.h>
 #include "cJSON.h"
-
+/* error print */
 static const char *ep;
 
 const char *cJSON_GetErrorPtr(void) { return ep; }
@@ -291,7 +291,7 @@ static const char *parse_string(cJSON *item, const char *str)
 	char *ptr2;
 	char *out;
 	int len = 0;
-	unsigned uc, uc2;
+	unsigned int uc, uc2;
 	if (*str != '\"')
 	{
 		ep = str;
@@ -299,7 +299,7 @@ static const char *parse_string(cJSON *item, const char *str)
 	} /* not a string! */
 
 	while (*ptr != '\"' && *ptr && ++len)
-		if (*ptr++ == '\\')
+		if (*(ptr++) == '\\')
 			ptr++; /* Skip escaped quotes. */
 
 	out = (char *)cJSON_malloc(len + 1); /* This is how long we need for the string, roughly. */
@@ -501,7 +501,7 @@ static const char *parse_object(cJSON *item, const char *value);
 static char *print_object(cJSON *item, int depth, int fmt, printbuffer *p);
 
 /* Utility to jump whitespace and cr/lf */
-static  char *skip(const char *in)
+static const char *skip(const char *in)
 {
 	while (in && *in && (unsigned char)*in <= 32)
 		in++;

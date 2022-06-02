@@ -1,3 +1,7 @@
 {
-    "commentTranslate.source": "Baidu"
+    "commentTranslate.source": "Baidu",
+    "files.associations": {
+        "math.h": "c",
+        "cjson.h": "c"
+    }
 }

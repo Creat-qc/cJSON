@@ -6,6 +6,15 @@ extern "C"
 {
 #endif
 
+/* cJSON Types: */
+#define cJSON_False 0
+#define cJSON_True 1
+#define cJSON_NULL 2
+#define cJSON_Number 3
+#define cJSON_String 4
+#define cJSON_Array 5
+#define cJSON_Object 6
+
 /* The cJSON structure: */
 typedef struct cJSON {
 	struct cJSON *next,*prev;	/* next/prev allow you to walk array/object chains. Alternatively, use GetArraySize/GetArrayItem/GetObjectItem */
@@ -23,6 +32,7 @@ typedef struct cJSON {
 /* Supply a block of JSON, and this returns a cJSON object you can interrogate. Call cJSON_Delete when finished. */
 extern cJSON *cJSON_Parse(const char *value);
 
+extern cJSON *cJSON_ParseWithOpts(const char *value,const char **return_parse_end,int require_null_terminated);
 
 
 

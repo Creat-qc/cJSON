@@ -182,8 +182,8 @@ int main()
 	doit(text4);//text5 is a pointer */
 
 	/* Parse standard testfiles: */
-	dofile("tests/test1");
-	// dofile("tests/test2");
+	// dofile("tests/test1");
+	dofile("tests/test2");
 	// dofile("tests/test3");
 	// dofile("tests/test4");
 	// dofile("tests/test5");
